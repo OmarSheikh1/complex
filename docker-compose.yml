@@ -6,7 +6,7 @@ services:
     image: 'redis:latest'
   server:
     build:
-      dockerfile: dockerfile.dev
+      dockerfile: Dockerfile.dev
       context: ./server
     volumes:
       - /app/node_modules
