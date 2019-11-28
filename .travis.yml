@@ -1,0 +1,28 @@
+sudo: required
+services:
+   - docker
+
+before_install:
+   - docker build -t omarsheikh1/complex -f ./client/Dockerfile.dev ./client
+   
+script:
+   - docker run omarsheikh1/complex npm test -- --coverage
+
+after_sucess:
+   - docker build -t omarsheikh1/multi-client ./client
+   - docker build -t omarsheikh1/multi-nginx ./nginx
+   - docker build -t omarsheikh1/multi-server ./server
+   - docker build -t omarsheikh1/multi-worker ./worker
+# login docker cli
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# take those images and push them to docker hub
+   - docker push omarsheikh1/multi-client
+   - docker push omarsheikh1/multi-nginx
+   - docker push omarsheikh1/multi-server
+   - docker push omarsheikh1/multi-worker
+
+
+
+
+
+
