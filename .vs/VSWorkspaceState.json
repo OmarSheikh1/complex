@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\client",
+    "\\client\\nginx",
+    "\\client\\public",
+    "\\nginx",
     "\\server"
   ],
-  "SelectedNode": "\\server\\Dockerfile.dev",
+  "SelectedNode": "\\nginx\\default.conf",
   "PreviewInSolutionExplorer": false
 }
